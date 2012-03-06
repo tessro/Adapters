@@ -18,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CC2F206F1506B90000FC5301 /* DBAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBAdapter.h; path = ../../DBAdapter.h; sourceTree = "<group>"; };
 		F86943C31505DA9800CD0C46 /* MongoDBAdapter.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MongoDBAdapter.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		F86943C61505DA9800CD0C46 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		F86943C91505DA9800CD0C46 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -28,7 +29,6 @@
 		F86943D21505DA9800CD0C46 /* MongoDBAdapter-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MongoDBAdapter-Prefix.pch"; sourceTree = "<group>"; };
 		F86943E11505DAD600CD0C46 /* MongoDBAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MongoDBAdapter.h; sourceTree = "<group>"; };
 		F86943E21505DAD600CD0C46 /* MongoDBAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MongoDBAdapter.m; sourceTree = "<group>"; };
-		F86943E51505DAE700CD0C46 /* DBAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBAdapter.h; path = /Users/mattt/Code/Induction/Adapters/PostgreSQLAdapter/PostgreSQLAdapter/../../DBAdapter.h; sourceTree = "<absolute>"; };
 		F89D1D8A1506666900A55CBD /* bson.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = bson.c; sourceTree = "<group>"; };
 		F89D1D8B1506666900A55CBD /* md5.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = md5.c; sourceTree = "<group>"; };
 		F89D1D8C1506666900A55CBD /* mongo.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mongo.c; sourceTree = "<group>"; };
@@ -94,7 +94,7 @@
 		F86943CC1505DA9800CD0C46 /* MongoDBAdapter */ = {
 			isa = PBXGroup;
 			children = (
-				F86943E51505DAE700CD0C46 /* DBAdapter.h */,
+				CC2F206F1506B90000FC5301 /* DBAdapter.h */,
 				F86943E11505DAD600CD0C46 /* MongoDBAdapter.h */,
 				F86943E21505DAD600CD0C46 /* MongoDBAdapter.m */,
 				F89D1D971506671B00A55CBD /* MongoDBUtilities.h */,
