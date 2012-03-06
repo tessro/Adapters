@@ -16,7 +16,7 @@
 }
 
 + (BOOL)canConnectWithURL:(NSURL *)url {
-    return [[url scheme] isEqualToString:[self primaryURLScheme]];
+    return [[url scheme] isEqualToString:[self primaryURLScheme]] && [url host];
 }
 
 + (id<DBConnection>)connectionWithURL:(NSURL *)url error:(NSError *__autoreleasing *)error {
