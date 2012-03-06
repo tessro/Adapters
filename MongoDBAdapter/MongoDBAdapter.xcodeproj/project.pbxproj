@@ -1,0 +1,313 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F86943C71505DA9800CD0C46 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F86943C61505DA9800CD0C46 /* Cocoa.framework */; };
+		F86943D11505DA9800CD0C46 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F86943CF1505DA9800CD0C46 /* InfoPlist.strings */; };
+		F86943E31505DAD600CD0C46 /* MongoDBAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = F86943E21505DAD600CD0C46 /* MongoDBAdapter.m */; };
+		F89D1D931506666900A55CBD /* bson.c in Sources */ = {isa = PBXBuildFile; fileRef = F89D1D8A1506666900A55CBD /* bson.c */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-checker"; }; };
+		F89D1D941506666900A55CBD /* md5.c in Sources */ = {isa = PBXBuildFile; fileRef = F89D1D8B1506666900A55CBD /* md5.c */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-checker"; }; };
+		F89D1D951506666900A55CBD /* mongo.c in Sources */ = {isa = PBXBuildFile; fileRef = F89D1D8C1506666900A55CBD /* mongo.c */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-checker"; }; };
+		F89D1D961506666900A55CBD /* numbers.c in Sources */ = {isa = PBXBuildFile; fileRef = F89D1D8D1506666900A55CBD /* numbers.c */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-checker"; }; };
+		F89D1D991506671B00A55CBD /* MongoDBUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = F89D1D981506671B00A55CBD /* MongoDBUtilities.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		F86943C31505DA9800CD0C46 /* MongoDBAdapter.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MongoDBAdapter.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		F86943C61505DA9800CD0C46 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		F86943C91505DA9800CD0C46 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		F86943CA1505DA9800CD0C46 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		F86943CB1505DA9800CD0C46 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		F86943CE1505DA9800CD0C46 /* MongoDBAdapter-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MongoDBAdapter-Info.plist"; sourceTree = "<group>"; };
+		F86943D01505DA9800CD0C46 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F86943D21505DA9800CD0C46 /* MongoDBAdapter-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MongoDBAdapter-Prefix.pch"; sourceTree = "<group>"; };
+		F86943E11505DAD600CD0C46 /* MongoDBAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MongoDBAdapter.h; sourceTree = "<group>"; };
+		F86943E21505DAD600CD0C46 /* MongoDBAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MongoDBAdapter.m; sourceTree = "<group>"; };
+		F86943E51505DAE700CD0C46 /* DBAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBAdapter.h; path = /Users/mattt/Code/Induction/Adapters/PostgreSQLAdapter/PostgreSQLAdapter/../../DBAdapter.h; sourceTree = "<absolute>"; };
+		F89D1D8A1506666900A55CBD /* bson.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = bson.c; sourceTree = "<group>"; };
+		F89D1D8B1506666900A55CBD /* md5.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = md5.c; sourceTree = "<group>"; };
+		F89D1D8C1506666900A55CBD /* mongo.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mongo.c; sourceTree = "<group>"; };
+		F89D1D8D1506666900A55CBD /* numbers.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = numbers.c; sourceTree = "<group>"; };
+		F89D1D8E1506666900A55CBD /* bson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bson.h; sourceTree = "<group>"; };
+		F89D1D8F1506666900A55CBD /* md5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = md5.h; sourceTree = "<group>"; };
+		F89D1D901506666900A55CBD /* mongo_except.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mongo_except.h; sourceTree = "<group>"; };
+		F89D1D911506666900A55CBD /* mongo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mongo.h; sourceTree = "<group>"; };
+		F89D1D921506666900A55CBD /* platform_hacks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = platform_hacks.h; sourceTree = "<group>"; };
+		F89D1D971506671B00A55CBD /* MongoDBUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MongoDBUtilities.h; sourceTree = "<group>"; };
+		F89D1D981506671B00A55CBD /* MongoDBUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MongoDBUtilities.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F86943C01505DA9800CD0C46 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F86943C71505DA9800CD0C46 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F86943B81505DA9800CD0C46 = {
+			isa = PBXGroup;
+			children = (
+				F86943CC1505DA9800CD0C46 /* MongoDBAdapter */,
+				F86943C51505DA9800CD0C46 /* Frameworks */,
+				F86943C41505DA9800CD0C46 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F86943C41505DA9800CD0C46 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F86943C31505DA9800CD0C46 /* MongoDBAdapter.bundle */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F86943C51505DA9800CD0C46 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F86943E61505DD7E00CD0C46 /* MongoDB */,
+				F86943C61505DA9800CD0C46 /* Cocoa.framework */,
+				F86943C81505DA9800CD0C46 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F86943C81505DA9800CD0C46 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F86943C91505DA9800CD0C46 /* AppKit.framework */,
+				F86943CA1505DA9800CD0C46 /* CoreData.framework */,
+				F86943CB1505DA9800CD0C46 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		F86943CC1505DA9800CD0C46 /* MongoDBAdapter */ = {
+			isa = PBXGroup;
+			children = (
+				F86943E51505DAE700CD0C46 /* DBAdapter.h */,
+				F86943E11505DAD600CD0C46 /* MongoDBAdapter.h */,
+				F86943E21505DAD600CD0C46 /* MongoDBAdapter.m */,
+				F89D1D971506671B00A55CBD /* MongoDBUtilities.h */,
+				F89D1D981506671B00A55CBD /* MongoDBUtilities.m */,
+				F86943CD1505DA9800CD0C46 /* Supporting Files */,
+			);
+			path = MongoDBAdapter;
+			sourceTree = "<group>";
+		};
+		F86943CD1505DA9800CD0C46 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F86943CE1505DA9800CD0C46 /* MongoDBAdapter-Info.plist */,
+				F86943CF1505DA9800CD0C46 /* InfoPlist.strings */,
+				F86943D21505DA9800CD0C46 /* MongoDBAdapter-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F86943E61505DD7E00CD0C46 /* MongoDB */ = {
+			isa = PBXGroup;
+			children = (
+				F89D1D8A1506666900A55CBD /* bson.c */,
+				F89D1D8B1506666900A55CBD /* md5.c */,
+				F89D1D8C1506666900A55CBD /* mongo.c */,
+				F89D1D8D1506666900A55CBD /* numbers.c */,
+				F89D1D8E1506666900A55CBD /* bson.h */,
+				F89D1D8F1506666900A55CBD /* md5.h */,
+				F89D1D901506666900A55CBD /* mongo_except.h */,
+				F89D1D911506666900A55CBD /* mongo.h */,
+				F89D1D921506666900A55CBD /* platform_hacks.h */,
+			);
+			name = MongoDB;
+			path = MongoDBAdapter/MongoDB;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F86943C21505DA9800CD0C46 /* MongoDBAdapter */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F86943D51505DA9800CD0C46 /* Build configuration list for PBXNativeTarget "MongoDBAdapter" */;
+			buildPhases = (
+				F86943BF1505DA9800CD0C46 /* Sources */,
+				F86943C01505DA9800CD0C46 /* Frameworks */,
+				F86943C11505DA9800CD0C46 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MongoDBAdapter;
+			productName = MongoDBAdapter;
+			productReference = F86943C31505DA9800CD0C46 /* MongoDBAdapter.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F86943BA1505DA9800CD0C46 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = F86943BD1505DA9800CD0C46 /* Build configuration list for PBXProject "MongoDBAdapter" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = F86943B81505DA9800CD0C46;
+			productRefGroup = F86943C41505DA9800CD0C46 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F86943C21505DA9800CD0C46 /* MongoDBAdapter */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F86943C11505DA9800CD0C46 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F86943D11505DA9800CD0C46 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F86943BF1505DA9800CD0C46 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F89D1D931506666900A55CBD /* bson.c in Sources */,
+				F89D1D941506666900A55CBD /* md5.c in Sources */,
+				F89D1D951506666900A55CBD /* mongo.c in Sources */,
+				F89D1D961506666900A55CBD /* numbers.c in Sources */,
+				F86943E31505DAD600CD0C46 /* MongoDBAdapter.m in Sources */,
+				F89D1D991506671B00A55CBD /* MongoDBUtilities.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		F86943CF1505DA9800CD0C46 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F86943D01505DA9800CD0C46 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F86943D31505DA9800CD0C46 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		F86943D41505DA9800CD0C46 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		F86943D61505DA9800CD0C46 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MongoDBAdapter/MongoDBAdapter-Prefix.pch";
+				INFOPLIST_FILE = "MongoDBAdapter/MongoDBAdapter-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		F86943D71505DA9800CD0C46 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MongoDBAdapter/MongoDBAdapter-Prefix.pch";
+				INFOPLIST_FILE = "MongoDBAdapter/MongoDBAdapter-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F86943BD1505DA9800CD0C46 /* Build configuration list for PBXProject "MongoDBAdapter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F86943D31505DA9800CD0C46 /* Debug */,
+				F86943D41505DA9800CD0C46 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F86943D51505DA9800CD0C46 /* Build configuration list for PBXNativeTarget "MongoDBAdapter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F86943D61505DA9800CD0C46 /* Debug */,
+				F86943D71505DA9800CD0C46 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F86943BA1505DA9800CD0C46 /* Project object */;
+}
