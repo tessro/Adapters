@@ -1,0 +1,278 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F86943931505C31900CD0C46 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F86943921505C31900CD0C46 /* Cocoa.framework */; };
+		F869439D1505C31900CD0C46 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F869439B1505C31900CD0C46 /* InfoPlist.strings */; };
+		F86943B21505C37E00CD0C46 /* SQLiteAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = F86943B11505C37E00CD0C46 /* SQLiteAdapter.m */; };
+		F86943B41505CD3300CD0C46 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F86943B31505CD3300CD0C46 /* libsqlite3.dylib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		F869438F1505C31900CD0C46 /* SQLiteAdapter.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SQLiteAdapter.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		F86943921505C31900CD0C46 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		F86943951505C31900CD0C46 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		F86943961505C31900CD0C46 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		F86943971505C31900CD0C46 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		F869439A1505C31900CD0C46 /* SQLiteAdapter-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SQLiteAdapter-Info.plist"; sourceTree = "<group>"; };
+		F869439C1505C31900CD0C46 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F869439E1505C31900CD0C46 /* SQLiteAdapter-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SQLiteAdapter-Prefix.pch"; sourceTree = "<group>"; };
+		F86943AD1505C34300CD0C46 /* DBAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBAdapter.h; path = /Users/mattt/Code/Induction/Adapters/PostgreSQLAdapter/PostgreSQLAdapter/../../DBAdapter.h; sourceTree = "<absolute>"; };
+		F86943AE1505C34300CD0C46 /* SQLAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SQLAdapter.h; path = /Users/mattt/Code/Induction/Adapters/PostgreSQLAdapter/PostgreSQLAdapter/../../SQLAdapter.h; sourceTree = "<absolute>"; };
+		F86943B01505C37E00CD0C46 /* SQLiteAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQLiteAdapter.h; sourceTree = "<group>"; };
+		F86943B11505C37E00CD0C46 /* SQLiteAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQLiteAdapter.m; sourceTree = "<group>"; };
+		F86943B31505CD3300CD0C46 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F869438C1505C31900CD0C46 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F86943B41505CD3300CD0C46 /* libsqlite3.dylib in Frameworks */,
+				F86943931505C31900CD0C46 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F86943841505C31900CD0C46 = {
+			isa = PBXGroup;
+			children = (
+				F86943981505C31900CD0C46 /* SQLiteAdapter */,
+				F86943911505C31900CD0C46 /* Frameworks */,
+				F86943901505C31900CD0C46 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F86943901505C31900CD0C46 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F869438F1505C31900CD0C46 /* SQLiteAdapter.bundle */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F86943911505C31900CD0C46 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F86943B31505CD3300CD0C46 /* libsqlite3.dylib */,
+				F86943921505C31900CD0C46 /* Cocoa.framework */,
+				F86943941505C31900CD0C46 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F86943941505C31900CD0C46 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F86943951505C31900CD0C46 /* AppKit.framework */,
+				F86943961505C31900CD0C46 /* CoreData.framework */,
+				F86943971505C31900CD0C46 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		F86943981505C31900CD0C46 /* SQLiteAdapter */ = {
+			isa = PBXGroup;
+			children = (
+				F86943AD1505C34300CD0C46 /* DBAdapter.h */,
+				F86943AE1505C34300CD0C46 /* SQLAdapter.h */,
+				F86943B01505C37E00CD0C46 /* SQLiteAdapter.h */,
+				F86943B11505C37E00CD0C46 /* SQLiteAdapter.m */,
+				F86943991505C31900CD0C46 /* Supporting Files */,
+			);
+			path = SQLiteAdapter;
+			sourceTree = "<group>";
+		};
+		F86943991505C31900CD0C46 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F869439A1505C31900CD0C46 /* SQLiteAdapter-Info.plist */,
+				F869439B1505C31900CD0C46 /* InfoPlist.strings */,
+				F869439E1505C31900CD0C46 /* SQLiteAdapter-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F869438E1505C31900CD0C46 /* SQLiteAdapter */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F86943A11505C31900CD0C46 /* Build configuration list for PBXNativeTarget "SQLiteAdapter" */;
+			buildPhases = (
+				F869438B1505C31900CD0C46 /* Sources */,
+				F869438C1505C31900CD0C46 /* Frameworks */,
+				F869438D1505C31900CD0C46 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SQLiteAdapter;
+			productName = SQLiteAdapter;
+			productReference = F869438F1505C31900CD0C46 /* SQLiteAdapter.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F86943861505C31900CD0C46 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = F86943891505C31900CD0C46 /* Build configuration list for PBXProject "SQLiteAdapter" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = F86943841505C31900CD0C46;
+			productRefGroup = F86943901505C31900CD0C46 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F869438E1505C31900CD0C46 /* SQLiteAdapter */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F869438D1505C31900CD0C46 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F869439D1505C31900CD0C46 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F869438B1505C31900CD0C46 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F86943B21505C37E00CD0C46 /* SQLiteAdapter.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		F869439B1505C31900CD0C46 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F869439C1505C31900CD0C46 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F869439F1505C31900CD0C46 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		F86943A01505C31900CD0C46 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		F86943A21505C31900CD0C46 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SQLiteAdapter/SQLiteAdapter-Prefix.pch";
+				INFOPLIST_FILE = "SQLiteAdapter/SQLiteAdapter-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		F86943A31505C31900CD0C46 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SQLiteAdapter/SQLiteAdapter-Prefix.pch";
+				INFOPLIST_FILE = "SQLiteAdapter/SQLiteAdapter-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F86943891505C31900CD0C46 /* Build configuration list for PBXProject "SQLiteAdapter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F869439F1505C31900CD0C46 /* Debug */,
+				F86943A01505C31900CD0C46 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F86943A11505C31900CD0C46 /* Build configuration list for PBXNativeTarget "SQLiteAdapter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F86943A21505C31900CD0C46 /* Debug */,
+				F86943A31505C31900CD0C46 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F86943861505C31900CD0C46 /* Project object */;
+}

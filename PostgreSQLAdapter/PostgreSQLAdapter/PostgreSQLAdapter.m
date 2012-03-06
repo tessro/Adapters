@@ -7,7 +7,7 @@
 //
 
 #import "PostgreSQLAdapter.h"
-#import "libpq-fe.h"
+#import <libpq-fe.h>
 
 #ifndef INT8OID
     #define INVALID_OID     (-1)
@@ -122,7 +122,7 @@ static NSDate * NSDateFromPostgreSQLTimestamp(NSString *timestamp) {
 - (BOOL)open {
 	[self close];
     
-	_pgconn = (PGconn *)PQconnectdb([PostgreSQLConnectionStringFromURL(_url) cStringUsingEncoding:NSUTF8StringEncoding]);
+	_pgconn = (PGconn *)PQconnectdb([PostgreSQLConnectionStringFromURL(_url) UTF8String]);
     
 	if (PQstatus(_pgconn) == CONNECTION_BAD)  {
         NSLog(@"Connection bad: %s", PQerrorMessage(_pgconn));
@@ -173,7 +173,7 @@ static NSDate * NSDateFromPostgreSQLTimestamp(NSString *timestamp) {
 - (id <SQLResultSet>)executeSQL:(NSString *)SQL 
                           error:(NSError *__autoreleasing *)error 
 {
-    PGresult *pgresult = PQexec(_pgconn, [SQL cStringUsingEncoding:NSUTF8StringEncoding]);
+    PGresult *pgresult = PQexec(_pgconn, [SQL UTF8String]);
     
     return [[PostgreSQLResultSet alloc] initWithPGResult:pgresult];
 }

@@ -1,52 +1,51 @@
 //
-//  MySQL.m
-//  Kirin
+//  SQLiteAdapter.m
+//  SQLiteAdapter
 //
-//  Created by Mattt Thompson on 12/01/31.
-//  Copyright (c) 2012年 Heroku. All rights reserved.
+//  Created by Mattt Thompson on 12/03/05.
+//  Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
 //
 
-#import "MySQLAdapter.h"
+#import "SQLiteAdapter.h"
 
-#import <mysql.h>
+#import <sqlite3.h>
 
-@implementation MySQLAdapter
+@implementation SQLiteAdapter
 
 + (NSString *)primaryURLScheme {
-    return @"mysql";
+    return @"sqlite";
 }
 
 + (BOOL)canConnectWithURL:(NSURL *)url {
-    return [[url scheme] isEqualToString:[self primaryURLScheme]];
+    return [[NSSet setWithObjects:@"sqlite", @"sqlite3", @"file", nil] containsObject:[url scheme]];    
 }
 
 + (id <DBConnection>)connectionWithURL:(NSURL *)url 
                                  error:(NSError **)error
 {
-    return [[MySQLConnection alloc] initWithURL:url];
+    return [[SQLiteConnection alloc] initWithURL:url];
 }
 
 @end
 
 #pragma mark -
 
-@interface MySQLConnection () {
+@interface SQLiteConnection () {
 @public
-    MYSQL *_mysql_connection;
+    sqlite3 *_sqlite3_connection;
 @private
     __strong NSURL *_url;
 }
 
 @end
 
-@implementation MySQLConnection
+@implementation SQLiteConnection
 @synthesize url = _url;
 @dynamic databases;
 
 - (void)dealloc {
-    if (_mysql_connection) {
-        mysql_close(_mysql_connection);
-        _mysql_connection = NULL;
+    if (_sqlite3_connection) {
+        _sqlite3_connection = NULL;
     }
 }
 
@@ -64,91 +63,61 @@
 - (BOOL)open {
 	[self close];
     
-	mysql_close(_mysql_connection);
+    _sqlite3_connection = NULL;
     
-    _mysql_connection = mysql_init(NULL);
-    
-    const char *host = [[_url host] UTF8String];
-    const char *user = [[_url user] UTF8String];
-    const char *password = [[_url password] UTF8String];
-    const char *database = [[_url lastPathComponent] UTF8String];
-    unsigned int port = [[_url port] unsignedIntValue];
-    const char *socket = MYSQL_UNIX_ADDR;
-    
-    mysql_real_connect(_mysql_connection, host, user, password, database, port, socket, 0);
+    int code = sqlite3_open([[_url absoluteString] UTF8String], &_sqlite3_connection);
+
+    if (code != 0) {
+        NSLog(@"Error: %d", code);
+        return NO;
+    }
     
     return YES;
 }
 
 - (BOOL)close {
-    //	if (_pgconn == nil) { return NO; }
-    //	if (isConnected == NO) { return NO; }
-    //	
-    //	[self appendSQLLog:[NSString stringWithString:@"Disconnected from database.\n"]];
-	mysql_close(_mysql_connection);
-    //	_pgconn = nil;
-    //	isConnected = NO;
+    sqlite3_close(_sqlite3_connection);
 	return YES;
 }
 
 - (BOOL)reset {
-    mysql_refresh(_mysql_connection, 0);
-    return mysql_stat(_mysql_connection) == MYSQL_STATUS_READY;
+    return NO;
 }
 
 - (id <SQLResultSet>)executeSQL:(NSString *)SQL 
                           error:(NSError *__autoreleasing *)error 
-{
-    MYSQL_RES *myql_result = nil;
+{    
+    sqlite3_stmt *sqlite3_statement = NULL;
+    sqlite3_prepare_v2(_sqlite3_connection, [SQL UTF8String], -1, &sqlite3_statement, NULL);
     
-    int code = mysql_query(_mysql_connection, [SQL UTF8String]);
-    if (code == 0) {
-		if (mysql_field_count(_mysql_connection) != 0) {
-			myql_result = mysql_store_result(_mysql_connection);
-		} else {
-			return nil;
-		}
-	} else {
-        //		if ([SQL length] < 1024) {
-        //			NSLog (@"Problem in queryString error code is : %d, query is : %@-\n", theQueryCode, query);
-        //		} else {
-        //			NSLog (@"Problem in queryString error code is : %d, query is (truncated) : %@-\n", theQueryCode, [query substringToIndex:1024]);
-        //		}
-        //		
-        //        NSLog(@"Error message is : %@\n", [self getLastErrorMessage]);
-		
+    if (sqlite3_statement) {
+        return [[SQLiteResultSet alloc] initWithSQLiteStatement:sqlite3_statement];
+    } else {
         return nil;
-	}
-    
-    return [[MySQLResultSet alloc] initWithMySQLResult:myql_result];
+    }
 }
 
 
 - (NSArray *)databases {
-    MySQLResultSet *resultSet = [[MySQLResultSet alloc] initWithMySQLResult:mysql_list_dbs(_mysql_connection, NULL)]; 
-    NSMutableArray *mutableDatabases = [[NSMutableArray alloc] init];
-    [[resultSet tuples] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        MySQLDatabase *database = [[MySQLDatabase alloc] initWithConnection:self name:[(MySQLTuple *)obj valueForKey:@"Database"] stringEncoding:NSUTF8StringEncoding];
-        [mutableDatabases addObject:database];
-    }];
+    SQLiteDatabase *database = [[SQLiteDatabase alloc] initWithConnection:self name:[_url path] stringEncoding:NSUTF8StringEncoding];
     
-    return mutableDatabases;
+    return [NSArray arrayWithObject:database];
 }
 
 @end
 
 #pragma mark -
 
-@interface MySQLDatabase () {
+@interface SQLiteDatabase () {
 @private
-    __strong MySQLConnection *_connection;
+    __strong SQLiteConnection *_connection;
     __strong NSString *_name;
     __strong NSArray *_tables;
     NSStringEncoding _stringEncoding;
 }
 @end
 
-@implementation MySQLDatabase
+@implementation SQLiteDatabase
 @synthesize connection = _connection;
 @synthesize name = _name;
 @synthesize stringEncoding = _stringEncoding;
@@ -160,16 +129,16 @@
     if (!self) {
         return nil;
     }
-        
+    
     _connection = connection;
     _name = name;
     _stringEncoding = NSUTF8StringEncoding;
     
-    MySQLResultSet *resultSet = [[MySQLResultSet alloc] initWithMySQLResult:mysql_list_tables(_connection->_mysql_connection, NULL)];
+    SQLiteResultSet *resultSet = [_connection executeSQL:@"SELECT name FROM (SELECT * FROM sqlite_master UNION ALL SELECT * FROM sqlite_temp_master) WHERE type == 'table' AND name NOT LIKE 'sqlite_%' ORDER BY name ASC" error:nil];
     NSString *fieldName = [[[resultSet fields] lastObject] name];
     NSMutableArray *mutableTables = [NSMutableArray array];
     [[resultSet tuples] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        MySQLTable *table = [[MySQLTable alloc] initWithDatabase:self name:[(MySQLTuple *)obj valueForKey:fieldName] stringEncoding:NSUTF8StringEncoding];
+        SQLiteTable *table = [[SQLiteTable alloc] initWithDatabase:self name:[(SQLiteTuple *)obj valueForKey:fieldName] stringEncoding:NSUTF8StringEncoding];
         [mutableTables addObject:table];
     }];
     
@@ -194,15 +163,15 @@
 
 #pragma mark -
 
-@interface MySQLTable () {
+@interface SQLiteTable () {
 @private
-    __strong MySQLDatabase *_database;
+    __strong SQLiteDatabase *_database;
     __strong NSString *_name;
     NSStringEncoding _stringEncoding;
 }
 @end
 
-@implementation MySQLTable
+@implementation SQLiteTable
 @synthesize name = _name;
 @synthesize stringEncoding = _stringEncoding;
 
@@ -242,7 +211,7 @@
 
 #pragma mark -
 
-@interface MySQLField () {
+@interface SQLiteField () {
 @private
     NSUInteger _index;
     __strong NSString *_name;
@@ -251,23 +220,20 @@
 }
 @end
 
-@implementation MySQLField
+@implementation SQLiteField
 @synthesize index = _index;
 @synthesize name = _name;
 @synthesize type = _type;
 @synthesize size = _size;
 
-+ (MySQLField *)fieldInMySQLResult:(void *)result 
-                           atIndex:(NSUInteger)fieldIndex 
++ (SQLiteField *)fieldInSQLiteResult:(void *)result 
+                             atIndex:(NSUInteger)fieldIndex 
 {
-    MySQLField *field = [[MySQLField alloc] init];
+    SQLiteField *field = [[SQLiteField alloc] init];
     field->_index = fieldIndex;
-    
-    MYSQL_FIELD *myfield = mysql_fetch_field_direct(result, (int)fieldIndex);
-    field->_name = [NSString stringWithCString:myfield->name encoding:NSUTF8StringEncoding];
-    
+    field->_name = [NSString stringWithUTF8String:sqlite3_column_name(result, (int)fieldIndex)];
     field->_type = DBStringValue;
-     
+    
     return field;
 }
 
@@ -282,14 +248,14 @@
 
 #pragma mark -
 
-@interface MySQLTuple () {
+@interface SQLiteTuple () {
 @private
     NSUInteger _index;
     __strong NSDictionary *_valuesKeyedByFieldName;
 }
 @end
 
-@implementation MySQLTuple
+@implementation SQLiteTuple
 @synthesize index = _index;
 
 - (id)initWithValuesKeyedByFieldName:(NSDictionary *)keyedValues {
@@ -311,9 +277,8 @@
 
 #pragma mark -
 
-@interface MySQLResultSet () {
+@interface SQLiteResultSet () {
 @private
-    MYSQL_RES *_mysql_result;
     NSUInteger _tuplesCount;
     NSUInteger _fieldsCount;
     __strong NSArray *_fields;
@@ -321,75 +286,66 @@
     __strong NSArray *_tuples;
 }
 
-- (id)tupleValueAtIndex:(NSUInteger)tupleIndex 
-          forFieldNamed:(NSString *)fieldName;
+- (id)tupleValueForStatement:(void *)statement 
+                atFieldIndex:(NSUInteger)fieldIndex;
 @end
 
-@implementation MySQLResultSet
+@implementation SQLiteResultSet
 @synthesize fields = _fields;
 @synthesize tuples = _tuples;
 
-- (void)dealloc {
-    if (_mysql_result) {
-        _mysql_result = NULL;
-    }    
-}
-
-- (id)initWithMySQLResult:(void *)result {
+- (id)initWithSQLiteStatement:(void *)result {
     self = [super init];
     if (!self) {
         return nil;
     }
     
-    _mysql_result = result;
-    _tuplesCount = mysql_num_rows(_mysql_result);
-    _fieldsCount = mysql_num_fields(_mysql_result);
+    _fieldsCount = sqlite3_column_count(result);
     
     NSMutableArray *mutableFields = [[NSMutableArray alloc] initWithCapacity:_fieldsCount];
     NSIndexSet *fieldIndexSet = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0,_fieldsCount)];
     [fieldIndexSet enumerateIndexesWithOptions:NSEnumerationConcurrent usingBlock:^(NSUInteger fieldIndex, BOOL *stop) {
-        MySQLField *field = [MySQLField fieldInMySQLResult:result atIndex:fieldIndex];
+        SQLiteField *field = [SQLiteField fieldInSQLiteResult:result atIndex:fieldIndex];
         [mutableFields addObject:field];
     }];
     _fields = mutableFields;
     
     NSMutableDictionary *mutableKeyedFields = [[NSMutableDictionary alloc] initWithCapacity:_fieldsCount];
-    for (MySQLField *field in _fields) {
+    for (SQLiteField *field in _fields) {
         [mutableKeyedFields setObject:field forKey:field.name];
     }
     _fieldsKeyedByName = mutableKeyedFields;
     
-    NSMutableArray *mutableTuples = [[NSMutableArray alloc] initWithCapacity:_tuplesCount];
-    NSIndexSet *tupleIndexSet = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, _tuplesCount)];
-    NSArray *fieldNames = [_fieldsKeyedByName allKeys];
-    
-    [tupleIndexSet enumerateIndexesWithOptions:0 usingBlock:^(NSUInteger tupleIndex, BOOL *stop) {
+    NSMutableArray *mutableTuples = [[NSMutableArray alloc] init];
+    sqlite3_reset(result);
+    int code = sqlite3_step(result);
+    while (code == SQLITE_ROW) {
         NSMutableDictionary *mutableKeyedTupleValues = [[NSMutableDictionary alloc] initWithCapacity:_fieldsCount];
-        [fieldNames enumerateObjectsWithOptions:0 usingBlock:^(id fieldName, NSUInteger idx, BOOL *stop) {
-            id value = [self tupleValueAtIndex:tupleIndex forFieldNamed:fieldName];
-            [mutableKeyedTupleValues setObject:value forKey:fieldName];
-        }];
-        MySQLTuple *tuple = [[MySQLTuple alloc] initWithValuesKeyedByFieldName:mutableKeyedTupleValues];
+        for (SQLiteField *field in _fields) {
+            id value = [self tupleValueForStatement:result atFieldIndex:[field index]];
+            [mutableKeyedTupleValues setObject:value forKey:[field name]];
+        }
+        SQLiteTuple *tuple = [[SQLiteTuple alloc] initWithValuesKeyedByFieldName:mutableKeyedTupleValues];
         [mutableTuples addObject:tuple];
-    }];
+        code = sqlite3_step(result);
+    }
     
     _tuples = mutableTuples;
+    _tuplesCount = [_tuples count];
+    
+    sqlite3_finalize(result);
     
     return self;
 }
 
-- (id)tupleValueAtIndex:(NSUInteger)tupleIndex 
-          forFieldNamed:(NSString *)fieldName 
+- (id)tupleValueForStatement:(void *)statement 
+                atFieldIndex:(NSUInteger)fieldIndex
 {
-    
-    mysql_data_seek(_mysql_result, tupleIndex);
-    MYSQL_ROW row = mysql_fetch_row(_mysql_result);
-    
-    NSUInteger fieldIndex = [[_fieldsKeyedByName objectForKey:fieldName] index];;
-    if (row[fieldIndex] != NULL) {
-        return [NSString stringWithCString:row[fieldIndex] encoding:NSUTF8StringEncoding];
-    } else {
+    const char *bytes = (const char *)sqlite3_column_text(statement, (int)fieldIndex);
+    if (bytes == NULL) {
         return [NSNull null];
+    } else {
+        return [[NSString alloc] initWithUTF8String:bytes];
     }
 }
 
@@ -406,17 +362,17 @@
 }
 
 - (NSString *)identifierForTableColumnAtIndex:(NSUInteger)index {
-    MySQLField *field = [_fields objectAtIndex:index];
+    SQLiteField *field = [_fields objectAtIndex:index];
     return [field name];
 }
 
 - (DBValueType)valueTypeForTableColumnAtIndex:(NSUInteger)index {
-    MySQLField *field = [_fields objectAtIndex:index];
+    SQLiteField *field = [_fields objectAtIndex:index];
     return [field type];
 }
 
 - (NSSortDescriptor *)sortDescriptorPrototypeForTableColumnAtIndex:(NSUInteger)index {
-    MySQLField *field = [_fields objectAtIndex:index];
+    SQLiteField *field = [_fields objectAtIndex:index];
     if ([field type] == DBStringValue) {
         return [NSSortDescriptor sortDescriptorWithKey:[field name] ascending:YES selector:@selector(localizedStandardCompare:)];
     } else {
