@@ -22,11 +22,11 @@
 		F869439A1505C31900CD0C46 /* SQLiteAdapter-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SQLiteAdapter-Info.plist"; sourceTree = "<group>"; };
 		F869439C1505C31900CD0C46 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F869439E1505C31900CD0C46 /* SQLiteAdapter-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SQLiteAdapter-Prefix.pch"; sourceTree = "<group>"; };
-		F86943AD1505C34300CD0C46 /* DBAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBAdapter.h; path = /Users/mattt/Code/Induction/Adapters/PostgreSQLAdapter/PostgreSQLAdapter/../../DBAdapter.h; sourceTree = "<absolute>"; };
-		F86943AE1505C34300CD0C46 /* SQLAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SQLAdapter.h; path = /Users/mattt/Code/Induction/Adapters/PostgreSQLAdapter/PostgreSQLAdapter/../../SQLAdapter.h; sourceTree = "<absolute>"; };
 		F86943B01505C37E00CD0C46 /* SQLiteAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQLiteAdapter.h; sourceTree = "<group>"; };
 		F86943B11505C37E00CD0C46 /* SQLiteAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQLiteAdapter.m; sourceTree = "<group>"; };
 		F86943B31505CD3300CD0C46 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		FF824CD11506572200A46B7F /* DBAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBAdapter.h; path = ../../DBAdapter.h; sourceTree = "<group>"; };
+		FF824CD21506572200A46B7F /* SQLAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SQLAdapter.h; path = ../../SQLAdapter.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,8 +82,8 @@
 		F86943981505C31900CD0C46 /* SQLiteAdapter */ = {
 			isa = PBXGroup;
 			children = (
-				F86943AD1505C34300CD0C46 /* DBAdapter.h */,
-				F86943AE1505C34300CD0C46 /* SQLAdapter.h */,
+				FF824CD11506572200A46B7F /* DBAdapter.h */,
+				FF824CD21506572200A46B7F /* SQLAdapter.h */,
 				F86943B01505C37E00CD0C46 /* SQLiteAdapter.h */,
 				F86943B11505C37E00CD0C46 /* SQLiteAdapter.m */,
 				F86943991505C31900CD0C46 /* Supporting Files */,
