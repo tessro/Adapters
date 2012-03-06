@@ -32,7 +32,7 @@
 
 @implementation MongoDBConnection {
 @public
-    __strong mongo_connection *_mongo_connection;
+    mongo_connection *_mongo_connection;
 @private
     __strong NSURL *_url;
 }
