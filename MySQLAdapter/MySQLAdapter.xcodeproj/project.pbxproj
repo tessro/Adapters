@@ -1,0 +1,278 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F869435E1505A68300CD0C46 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F869435D1505A68300CD0C46 /* Cocoa.framework */; };
+		F86943681505A68300CD0C46 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F86943661505A68300CD0C46 /* InfoPlist.strings */; };
+		F869437D1505A6F200CD0C46 /* MySQLAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = F869437C1505A6F200CD0C46 /* MySQLAdapter.m */; };
+		F86943821505B0CD00CD0C46 /* libmysqlclient_r.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F86943801505B09D00CD0C46 /* libmysqlclient_r.dylib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		F869435A1505A68300CD0C46 /* MySQLAdapter.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MySQLAdapter.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		F869435D1505A68300CD0C46 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		F86943601505A68300CD0C46 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		F86943611505A68300CD0C46 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		F86943621505A68300CD0C46 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		F86943651505A68300CD0C46 /* MySQLAdapter-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MySQLAdapter-Info.plist"; sourceTree = "<group>"; };
+		F86943671505A68300CD0C46 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F86943691505A68300CD0C46 /* MySQLAdapter-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MySQLAdapter-Prefix.pch"; sourceTree = "<group>"; };
+		F86943781505A6DF00CD0C46 /* DBAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBAdapter.h; path = ../../DBAdapter.h; sourceTree = "<group>"; };
+		F86943791505A6DF00CD0C46 /* SQLAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SQLAdapter.h; path = ../../SQLAdapter.h; sourceTree = "<group>"; };
+		F869437B1505A6F200CD0C46 /* MySQLAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MySQLAdapter.h; sourceTree = "<group>"; };
+		F869437C1505A6F200CD0C46 /* MySQLAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MySQLAdapter.m; sourceTree = "<group>"; };
+		F86943801505B09D00CD0C46 /* libmysqlclient_r.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libmysqlclient_r.dylib; path = usr/local/lib/libmysqlclient_r.dylib; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F86943571505A68300CD0C46 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F86943821505B0CD00CD0C46 /* libmysqlclient_r.dylib in Frameworks */,
+				F869435E1505A68300CD0C46 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F869434F1505A68300CD0C46 = {
+			isa = PBXGroup;
+			children = (
+				F86943631505A68300CD0C46 /* MySQLAdapter */,
+				F869435C1505A68300CD0C46 /* Frameworks */,
+				F869435B1505A68300CD0C46 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F869435B1505A68300CD0C46 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F869435A1505A68300CD0C46 /* MySQLAdapter.bundle */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F869435C1505A68300CD0C46 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F86943801505B09D00CD0C46 /* libmysqlclient_r.dylib */,
+				F869435D1505A68300CD0C46 /* Cocoa.framework */,
+				F869435F1505A68300CD0C46 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F869435F1505A68300CD0C46 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F86943601505A68300CD0C46 /* AppKit.framework */,
+				F86943611505A68300CD0C46 /* CoreData.framework */,
+				F86943621505A68300CD0C46 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		F86943631505A68300CD0C46 /* MySQLAdapter */ = {
+			isa = PBXGroup;
+			children = (
+				F86943781505A6DF00CD0C46 /* DBAdapter.h */,
+				F86943791505A6DF00CD0C46 /* SQLAdapter.h */,
+				F869437B1505A6F200CD0C46 /* MySQLAdapter.h */,
+				F869437C1505A6F200CD0C46 /* MySQLAdapter.m */,
+				F86943641505A68300CD0C46 /* Supporting Files */,
+			);
+			path = MySQLAdapter;
+			sourceTree = "<group>";
+		};
+		F86943641505A68300CD0C46 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F86943651505A68300CD0C46 /* MySQLAdapter-Info.plist */,
+				F86943661505A68300CD0C46 /* InfoPlist.strings */,
+				F86943691505A68300CD0C46 /* MySQLAdapter-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F86943591505A68300CD0C46 /* MySQLAdapter */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F869436C1505A68300CD0C46 /* Build configuration list for PBXNativeTarget "MySQLAdapter" */;
+			buildPhases = (
+				F86943561505A68300CD0C46 /* Sources */,
+				F86943571505A68300CD0C46 /* Frameworks */,
+				F86943581505A68300CD0C46 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MySQLAdapter;
+			productName = MySQLAdapter;
+			productReference = F869435A1505A68300CD0C46 /* MySQLAdapter.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F86943511505A68300CD0C46 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = F86943541505A68300CD0C46 /* Build configuration list for PBXProject "MySQLAdapter" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = F869434F1505A68300CD0C46;
+			productRefGroup = F869435B1505A68300CD0C46 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F86943591505A68300CD0C46 /* MySQLAdapter */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F86943581505A68300CD0C46 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F86943681505A68300CD0C46 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F86943561505A68300CD0C46 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F869437D1505A6F200CD0C46 /* MySQLAdapter.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		F86943661505A68300CD0C46 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F86943671505A68300CD0C46 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F869436A1505A68300CD0C46 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		F869436B1505A68300CD0C46 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		F869436D1505A68300CD0C46 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MySQLAdapter/MySQLAdapter-Prefix.pch";
+				INFOPLIST_FILE = "MySQLAdapter/MySQLAdapter-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		F869436E1505A68300CD0C46 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MySQLAdapter/MySQLAdapter-Prefix.pch";
+				INFOPLIST_FILE = "MySQLAdapter/MySQLAdapter-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F86943541505A68300CD0C46 /* Build configuration list for PBXProject "MySQLAdapter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F869436A1505A68300CD0C46 /* Debug */,
+				F869436B1505A68300CD0C46 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F869436C1505A68300CD0C46 /* Build configuration list for PBXNativeTarget "MySQLAdapter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F869436D1505A68300CD0C46 /* Debug */,
+				F869436E1505A68300CD0C46 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F86943511505A68300CD0C46 /* Project object */;
+}

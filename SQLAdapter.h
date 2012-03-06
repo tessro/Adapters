@@ -19,6 +19,10 @@
 
 @property (readonly, nonatomic) NSArray *tables;
 
+- (id)initWithConnection:(id <SQLConnection>)connection 
+                    name:(NSString *)name
+          stringEncoding:(NSStringEncoding)stringEncoding;
+
 @end
 
 #pragma mark -
@@ -27,6 +31,10 @@
 
 @property (readonly, nonatomic) NSString *name;
 @property (readonly, nonatomic) NSStringEncoding stringEncoding;
+
+- (id)initWithDatabase:(id <SQLDatabase>)database
+                  name:(NSString *)name
+        stringEncoding:(NSStringEncoding)stringEncoding;
 
 @end
 

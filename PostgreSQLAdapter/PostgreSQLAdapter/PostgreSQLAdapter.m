@@ -208,7 +208,7 @@ static NSDate * NSDateFromPostgreSQLTimestamp(NSString *timestamp) {
 @synthesize stringEncoding = _stringEncoding;
 @synthesize tables = _tables;
 
-- (id)initWithConnection:(PostgreSQLConnection *)connection 
+- (id)initWithConnection:(id <SQLConnection>)connection 
                     name:(NSString *)name
           stringEncoding:(NSStringEncoding)stringEncoding
 {
@@ -262,7 +262,6 @@ static NSDate * NSDateFromPostgreSQLTimestamp(NSString *timestamp) {
 }
 @end
 
-// TODO formalize / add default implementation of data source proxy
 @implementation PostgreSQLTable
 @synthesize name = _name;
 @synthesize stringEncoding = _stringEncoding;
@@ -296,7 +295,7 @@ static NSDate * NSDateFromPostgreSQLTimestamp(NSString *timestamp) {
 - (id <DBResultSet>)resultSetForRecordsAtIndexes:(NSIndexSet *)indexes 
                                            error:(NSError *__autoreleasing *)error
 {
-    return [[_database connection] executeSQL:[NSString stringWithFormat:@"SELECT * FROM %@ OFFSET %d LIMIT %d ", _name, [indexes firstIndex], [indexes count]] error:nil];
+    return [[_database connection] executeSQL:[NSString stringWithFormat:@"SELECT * FROM %@ LIMIT %d OFFSET %d ", _name, [indexes count], [indexes firstIndex]] error:nil];
 }
 
 #pragma mark -
@@ -323,10 +322,10 @@ static NSDate * NSDateFromPostgreSQLTimestamp(NSString *timestamp) {
 @implementation PostgreSQLField
 @synthesize index = _index;
 @synthesize name = _name;
-@synthesize size = _size;
 @synthesize type = _type;
+@synthesize size = _size;
 
-+ (PostgreSQLField *)fieldInPGResult:(PGresult *)pgresult 
++ (PostgreSQLField *)fieldInPGResult:(void *)pgresult 
                              atIndex:(NSUInteger)fieldIndex 
 {
     PostgreSQLField *field = [[PostgreSQLField alloc] init];
@@ -436,7 +435,6 @@ static NSDate * NSDateFromPostgreSQLTimestamp(NSString *timestamp) {
 
 - (id)tupleValueAtIndex:(NSUInteger)tupleIndex 
           forFieldNamed:(NSString *)fieldName;
-
 @end
 
 @implementation PostgreSQLResultSet
@@ -450,7 +448,7 @@ static NSDate * NSDateFromPostgreSQLTimestamp(NSString *timestamp) {
     }    
 }
 
-- (id)initWithPGResult:(PGresult *)pgresult {
+- (id)initWithPGResult:(void *)pgresult {
     self = [super init];
     if (!self) {
         return nil;
