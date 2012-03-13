@@ -170,7 +170,20 @@
 - (id <DBResultSet>)resultSetForQuery:(NSString *)query 
                                 error:(NSError *__autoreleasing *)error 
 {
-    return nil;
+    id result = [[_connection client] command:query];
+    NSMutableArray *mutableRecords = [NSMutableArray arrayWithCapacity:1];
+
+    if ([result isKindOfClass:[NSArray class]]) {
+        [(NSArray*)result enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            [mutableRecords addObject:[[RedisKeyValuePair alloc] initWithKey:[NSString stringWithFormat:@"%i", idx] value:obj]];
+        }];
+    } else if (result) {
+        [mutableRecords addObject:[[RedisKeyValuePair alloc] initWithKey:@"0" value:result]];
+    } else {
+        [mutableRecords addObject:[[RedisKeyValuePair alloc] initWithKey:@"0" value:@"NULL"]];
+    }
+
+    return [[RedisResultSet alloc] initWithRecords:mutableRecords];
 }
 
 @end
@@ -237,7 +250,7 @@ enum {
 
 #pragma mark -
 
-@interface RedisKeyValuePair : NSObject <DBRecord> {
+@interface RedisKeyValuePair () {
 @private
     __strong NSString *_key;
     __strong NSString *_value;
@@ -245,9 +258,6 @@ enum {
 
 @property (readonly) NSString *key;
 @property (readonly) NSString *value;
-
-- (id)initWithKey:(NSString *)key
-            value:(NSString *)value;
 
 @end
 

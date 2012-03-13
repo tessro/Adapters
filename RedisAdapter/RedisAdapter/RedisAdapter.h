@@ -19,6 +19,8 @@
 
 @end
 
+#pragma mark -
+
 @interface RedisResultSet : NSObject <DBResultSet>
 
 - (id)initWithRecords:(NSArray *)records;
@@ -26,6 +28,13 @@
 @end
 
 #pragma mark -
+
+@interface RedisKeyValuePair : NSObject <DBRecord>
+
+- (id)initWithKey:(NSString *)key
+            value:(NSString *)value;
+
+@end
 
 @interface RedisRecord : NSObject <DBRecord>
 
