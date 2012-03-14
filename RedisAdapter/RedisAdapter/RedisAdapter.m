@@ -175,7 +175,7 @@
 
     if ([result isKindOfClass:[NSArray class]]) {
         [(NSArray*)result enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-            [mutableRecords addObject:[[RedisKeyValuePair alloc] initWithKey:[NSString stringWithFormat:@"%i", idx] value:obj]];
+            [mutableRecords addObject:[[RedisKeyValuePair alloc] initWithKey:[NSString stringWithFormat:@"%lu", idx] value:obj]];
         }];
     } else if (result) {
         [mutableRecords addObject:[[RedisKeyValuePair alloc] initWithKey:@"0" value:result]];
